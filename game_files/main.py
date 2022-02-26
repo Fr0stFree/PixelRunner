@@ -53,7 +53,7 @@ class Player(pygame.sprite.Sprite):
 class Obstacle(pygame.sprite.Sprite):
     def __init__(self, type):
         super().__init__()
-
+        self.speed = 5 + (pygame.time.get_ticks() - start_time) // 4000
         if type == 'fly':
             fly_frame_1 = pygame.image.load('game_files/graphics/fly/fly1.png').convert_alpha()
             fly_frame_2 = pygame.image.load('game_files/graphics/fly/fly2.png').convert_alpha()
@@ -77,7 +77,7 @@ class Obstacle(pygame.sprite.Sprite):
 
     def update(self):
         self.animation_state()
-        self.rect.x -= 5
+        self.rect.x -= self.speed
         self.destroy()
 
     def destroy(self):
