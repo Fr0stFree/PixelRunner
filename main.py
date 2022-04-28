@@ -1,4 +1,5 @@
 import pygame
+import os
 from random import randint, choice
 from sys import exit
 
@@ -55,13 +56,13 @@ class Obstacle(pygame.sprite.Sprite):
         super().__init__()
         self.speed = 5 + (pygame.time.get_ticks() - start_time) // 4000
         if type == 'fly':
-            fly_frame_1 = pygame.image.load('game_files/graphics/fly/fly1.png').convert_alpha()
-            fly_frame_2 = pygame.image.load('game_files/graphics/fly/fly2.png').convert_alpha()
+            fly_frame_1 = pygame.image.load(os.path.abspath(os.path.join('game_files', 'graphics', 'fly', 'fly1.png'))).convert_alpha()
+            fly_frame_2 = pygame.image.load(os.path.abspath(os.path.join('game_files', 'graphics', 'fly', 'fly2.png'))).convert_alpha()
             self.frames = [fly_frame_1, fly_frame_2]
             y_pos = 210
         elif type == 'snail':
-            snail_frame_1 = pygame.image.load('game_files/graphics/snail/snail1.png').convert_alpha()
-            snail_frame_2 = pygame.image.load('game_files/graphics/snail/snail2.png').convert_alpha()
+            snail_frame_1 = pygame.image.load(os.path.abspath(os.path.join('game_files', 'graphics', 'snail', 'snail1.png'))).convert_alpha()
+            snail_frame_2 = pygame.image.load(os.path.abspath(os.path.join('game_files', 'graphics', 'snail', 'snail2.png'))).convert_alpha()
             self.frames = [snail_frame_1, snail_frame_2]
             y_pos = 300
         
@@ -105,13 +106,14 @@ pygame.init()
 WIDTH, HEIGHT = 800, 400
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Pixel Runner')
-text_font = pygame.font.Font('game_files/font/Pixeltype.ttf', 36)
+text_font = pygame.font.Font(os.path.abspath(os.path.join('game_files', 'font', 'Pixeltype.ttf')), 36)
+
 clock = pygame.time.Clock()
 FPS = 60
 start_time = 0
 score = 0
 game_active = False
-bg_music = pygame.mixer.Sound('game_files/audio/music.wav')
+bg_music = pygame.mixer.Sound(os.path.abspath(os.path.join('game_files', 'audio', 'music.wav')))
 bg_music.play(loops=-1)
 bg_music.set_volume(0.25)
 
@@ -121,13 +123,14 @@ player.add(Player())
 obstacle_group = pygame.sprite.Group()
 
 #  Textures
-sky_surf = pygame.image.load('game_files/graphics/Sky.png').convert()
-ground_surf = pygame.image.load('game_files/graphics/ground.png').convert()
+sky_surf = pygame.image.load(os.path.abspath(os.path.join('game_files', 'graphics', 'Sky.png'))).convert()
+ground_surf = pygame.image.load(os.path.abspath(os.path.join('game_files', 'graphics', 'ground.png'))).convert()
 
 #  Intro screen
 text_surf = text_font.render('Press space to run', False, (64, 64, 64))
 text_rect = text_surf.get_rect(center=(WIDTH//2, HEIGHT-80))
-player_stand_surf = pygame.image.load('game_files/graphics/Player/player_stand.png').convert_alpha()
+player_stand_surf = pygame.image.load(os.path.abspath(os.path.join('game_files', 'graphics', 'Player', 'player_stand.png'))).convert_alpha()
+
 player_stand_surf = pygame.transform.rotozoom(player_stand_surf, 0, 2)
 player_stand_rect = player_stand_surf.get_rect(center=(WIDTH//2, HEIGHT//2))
 game_name_surf = text_font.render('Pixel Runner', False, (111, 196, 169))
