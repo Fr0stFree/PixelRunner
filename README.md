@@ -8,3 +8,8 @@
 ### Technologies used:
 1. [Python](https://github.com/python)
 2. [Pygame](https://github.com/pygame/)
+
+### to run the game use command:
+```
+python main.py
+```
