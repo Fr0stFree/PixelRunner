@@ -7,17 +7,16 @@ from sys import exit
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        player_walk_1 = pygame.image.load('game_files/graphics/Player/player_walk_1.png').convert_alpha()
-        player_walk_2 = pygame.image.load('game_files/graphics/Player/player_walk_2.png').convert_alpha()
+        player_walk_1 = pygame.image.load(os.path.abspath(os.path.join('game_files', 'graphics', 'Player', 'player_walk_1.png'))).convert_alpha()
+        player_walk_2 = pygame.image.load(os.path.abspath(os.path.join('game_files', 'graphics', 'Player', 'player_walk_2.png'))).convert_alpha()
         self.player_walk = [player_walk_1, player_walk_2]
         self.player_index = 0
-        self.player_jump = pygame.image.load('game_files/graphics/Player/jump.png').convert_alpha()
-
+        self.player_jump = pygame.image.load(os.path.abspath(os.path.join('game_files', 'graphics', 'Player', 'jump.png'))).convert_alpha()
         self.image = self.player_walk[self.player_index]
         self.rect = self.image.get_rect(midbottom=(80, 300))
         self.gravity = 0
 
-        self.jump_sound = pygame.mixer.Sound('game_files/audio/jump.mp3')
+        self.jump_sound = pygame.mixer.Sound(os.path.abspath(os.path.join('game_files', 'audio', 'jump.mp3')))
         self.jump_sound.set_volume(0.15)
 
     def player_input(self):
