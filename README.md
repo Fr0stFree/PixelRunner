@@ -11,7 +11,4 @@
 1. [Python](https://github.com/python)
 2. [Pygame](https://github.com/pygame/)
 
-#### To run the game just use command:
-```
-python main.py
-```
+#### To run the game just run the .exe file
