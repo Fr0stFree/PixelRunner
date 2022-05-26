@@ -10,4 +10,4 @@
 1. [Python](https://github.com/python)
 2. [Pygame](https://github.com/pygame/)
 
-####Execute the .exe file to run the game.
+#### Execute the .exe file to run the game.
